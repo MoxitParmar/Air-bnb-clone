@@ -35,7 +35,8 @@ module.exports.validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
 
   if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
+    // here in this line we print the additional error details if it has 
+    let errMsg = error.details.map((element) => element.mess=age).join(",");
     throw new ExpressError(400, errMsg);
   } else {
     next();

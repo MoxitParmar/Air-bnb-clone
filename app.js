@@ -3,9 +3,15 @@ if (process.env.NODE_ENV != "production") {
 }
 // console.log(process.env.SECRET);
 
+
+// the basic setup requirements
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+
+
+
+
 const path = require("path");
 // const mongo_url = "mongodb://127.0.0.1:27017/theWeeknd";
 const dbUrl = process.env.ATLASDB_URL
@@ -20,13 +26,16 @@ const User = require("./models/user.js");
 
 const ExpressError = require("./utils/ExpressError.js");
 
+
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+
+//this function checks our mongoose connection is successful or not
 main()
   .then(() => {
-    console.log("connected to db");
+    console.log("connected to mongoose db");
   })
   .catch((err) => {
     console.log(err);
@@ -87,11 +96,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/demouser", async (req, res) => {
-//   let fakeUser = new User({
-//     email: "student@gmail.com",
-//     username: "delta-student",
-//   });
 
 //   let registeredUser = await User.register(fakeUser, "helloworld");
 //   res.send(registeredUser);
@@ -115,10 +119,15 @@ app.use("/", userRouter);
 //   res.send('successful testing');
 // });
 
+
+//custom error for invalid route
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "page not found!"));
 });
 
+
+// the custom error handler
+// put all the controllers in a wrapAsync as argument
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "something went wrong" } = err;
   // res.status(statusCode).send(message);

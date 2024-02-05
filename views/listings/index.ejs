@@ -101,8 +101,11 @@
   </div>
 </div>
 
+
+<!-- //this code displays the listings at the listings home page -->
 <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
   <% for(let listing of allListings) { %>
+    <!-- this anchor tag lead us to the show page  -->
   <a href="/listings/<%= listing._id %>" class="listing-link">
     <div class="card col listing-card">
       <img
@@ -111,7 +114,7 @@
         alt="listing_image"
         style="height: 20rem"
       />
-      <div class="card-img-overlay">abcd</div>
+      <div class="card-img-overlay">theWeeknd</div>
       <div class="card-body">
         <p class="card-text">
           <b><%= listing.title %> </b> <br />
@@ -123,12 +126,6 @@
   </a>
   <% } %>
 </div>
-
-<!-- <ul>
-    <% for(let listing of allListings) { %>
-    <li><a href="/listings/<%= listing._id %>"> <%= listing.title %></a></li>
-    <% } %>
-  </ul> -->
 
 <script>
   let taxSwitch = document.getElementById("flexSwitchCheckDefault");

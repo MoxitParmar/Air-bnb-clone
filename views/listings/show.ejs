@@ -4,6 +4,10 @@
   const listing = <%- JSON.stringify(listing); %>
 
 </script>
+
+
+<!-- the card from bootstrap and the info for our show page -->
+<!-- give the hight to the image in style.css -->
 <div class="row mt-3">
   <div class="col-8 offset-3">
     <h3><%= listing.title %></h3>
@@ -27,6 +31,9 @@
     </div>
   </div>
   <br />
+
+
+  <!-- the edit and the delete buttons with condition of ownership -->
   <% if(currUser && listing.owner._id.equals(currUser._id)) {%>
   <div class="btns">
     <a
@@ -45,6 +52,8 @@
 <div class="col-6 offset-3 mb-3">
   <% if (currUser) {%>
   <hr />
+
+  <!-- //here it is how we create a review -->
   <h4>Leave a Review</h4>
   <form
     action="/listings/<%= listing.id %>/reviews"
@@ -52,17 +61,9 @@
     novalidate
     class="needs-validation"
   >
-    <!-- <div class="mb-3 mt-3">
-      <label for="rating" class="form-label"> Rating </label>
-      <input
-        class="form-range"
-        type="range"
-        min="1"
-        max="5"
-        id="rating"
-        name="review[rating]"
-      />
-    </div> -->
+
+
+    <!-- here it is the rating bootstrap styling code -->
     <div class="mb-3 mt-3">
       <label for="rating" class="form-label"> Rating </label>
       <fieldset class="starability-slot">
@@ -87,6 +88,8 @@
         <label for="first-rate5" title="Amazing">5 stars</label>
       </fieldset>
     </div>
+
+    <!-- here we leave the comment of our review -->
     <div class="mb-3 mt-3">
       <label for="comment" class="form-label">Comment</label>
       <textarea
@@ -103,6 +106,8 @@
   </form>
   <% } %>
 
+
+  <!-- here it is how we display our reviews in the form of bootstrap cards -->
   <% if(listing.reviews.length > 0) { %>
   <div class="row">
     <p><b>All Reviews</b></p>
@@ -116,6 +121,8 @@
         ></p>
         <p class="card-text mb-2"><%= review.comment %></p>
       </div>
+
+      <!-- form for delete the review -->
       <form
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
         class="mb-3"
@@ -123,11 +130,14 @@
       >
         <button class="btn btn-sm btn-dark">Delete</button>
       </form>
+      
     </div>
     <% } %>
   </div>
  <% } %>
 </div>
+
+
 <div class="col-6 offset-3 mb-3">
   <h3>Where You'll be</h3>
   <div id="map"></div>

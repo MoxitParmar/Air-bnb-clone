@@ -1,13 +1,19 @@
+
+// this routes are the same as we defined in the lisitng routes
 const express = require("express");
+//this is the router object
+// we write this params = true
+//because it allows us to use the parant path id that we get on the app.js file
 const router = express.Router({mergeParams: true});
 const wrapAsync = require("../utils/wrapAsync.js");
 // const ExpressError = require("../utils/ExpressError.js");
 // const { reviewSchema } = require("../schema.js");
 const Review = require("../models/review.js");
-const Listing = require("../models/listing.js");
+// const Listing = require("../models/listing.js");
 const {validateReview, isLoggedIn, isReviewAuthor} = require("../middleware.js")
 
 const reviewController = require("../controllers/reviews.js")
+const { setMaxListeners } = require("connect-mongo")
 
 
 // const validateReview = (req, res, next) => {
@@ -34,4 +40,4 @@ router.delete(
   wrapAsync(reviewController.destroyreview)
 );
 
-module.exports = router
+module.exports = router 

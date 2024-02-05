@@ -1,9 +1,12 @@
+// the basic requires
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync.js");
+
 // const { listingSchema } = require("../schema.js");
 // const ExpressError = require("../utils/ExpressError.js");
-const Listing = require("../models/listing.js");
+// const Listing = require("../models/listing.js");
+
 const cookiParser = require("cookie-parser");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
@@ -27,6 +30,7 @@ router.use(cookiParser());
 // };
 
 // index & create routes
+//paste all the listing routes and replace the app with router
 router
   .route("/")
   .get(wrapAsync(listingcontroller.index))
@@ -34,14 +38,13 @@ router
     isLoggedIn,
     upload.single("listing[image]"),
     validateListing,
-    wrapAsync(listingcontroller.createListing),
-
+    wrapAsync(listingcontroller.createListing)
   );
 
 //new route
 router.get("/new", isLoggedIn, listingcontroller.renderNewForm);
 
-// show , update , delete routes
+// show , update , delete routes with the id
 router
   .route("/:id")
   .get(wrapAsync(listingcontroller.showListing))
@@ -50,7 +53,8 @@ router
     isOwner,
     upload.single("listing[image]"),
     validateListing,
-    wrapAsync(listingcontroller.updateListing),
+    // here it is the wrapAsync function call
+    wrapAsync(listingcontroller.updateListing)
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingcontroller.destroyListing));
 
@@ -62,4 +66,5 @@ router.get(
   wrapAsync(listingcontroller.renderEditForm)
 );
 
+//now export all the routes that we defined to app.js
 module.exports = router;
