@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const Review = require("./review.js")
 
-
+ 
 //defining the schema of our Lisitng model(collection)
 const listingSchema = new Schema({
   title: {
