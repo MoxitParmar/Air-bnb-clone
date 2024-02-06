@@ -121,9 +121,9 @@ app.use("/", userRouter);
 
 
 //custom error for invalid route
-// app.all("*", (req, res, next) => {
-//   next(new ExpressError(404, "page not found!"));
-// });
+app.all("*", (req, res, next) => {
+  res.redirect("/listings")
+});
 
 
 // the custom error handler
