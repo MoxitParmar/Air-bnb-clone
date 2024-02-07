@@ -1,43 +1,6 @@
 <%- layout("/layouts/boilerplate") %>
 
-<!-- <h3>all the listings</h3> -->
-<style>
-  #filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-    .filter {
-      text-align: center;
-      margin-right: 2rem;
-      margin-top: 2rem;
-      opacity: 0.7;
-    }
-
-    .filter:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-
-    .filter p {
-      font-size: 0.8rem;
-    }
-
-    .tax-info {
-      display: none;
-    }
-
-    .tax-switch {
-      border: 1px solid black;
-      border-radius: 0.6rem;
-      height:2.7rem;
-      padding: 0.7rem;
-      margin-left: 6rem;
-      display: flex;
-      align-items: center;
-    }
-  }
-</style>
+<!-- the icons at the show page  -->
 <div id="filters">
   <div class="filter">
     <div><i class="fa-solid fa-fire"></i></div>
@@ -85,7 +48,7 @@
   </div>
 
 
-
+<!-- the tax-switch at the home page  -->
   <div class="tax-switch">
     <div class="form-check-reverse form-switch">
       <input
@@ -127,6 +90,8 @@
   <% } %>
 </div>
 
+
+<!-- the tax-switch functionality code  -->
 <script>
   let taxSwitch = document.getElementById("flexSwitchCheckDefault");
   taxSwitch.addEventListener("click", () => {

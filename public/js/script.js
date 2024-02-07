@@ -1,4 +1,4 @@
-// this whole code is copied from bootstrap 
+// this whole code is copied from bootstrap
 
 (() => {
   "use strict";

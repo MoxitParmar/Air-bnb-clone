@@ -1,24 +1,35 @@
+<!-- here it is the place where we display our flash msg in this ejs file and this file includes to boilerplate -->
+<!-- we write this condition because
+if we dont write it then it doesn't have any msg on regular basis
+so we always have an empty alert and to solve that we write this condition
+so now when we have the success flash msg then it will show -->
 <% if (success && success.length) { %>
-<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+<div
+  class="alert alert-success alert-dismissible fade show col-6 offset-3"
+  role="alert"
+>
   <%= success %>
   <button
-  type="button"
-  class="btn-close"
-  data-bs-dismiss="alert"
-  aria-label="Close"
-></button>
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
 </div>
 <% } %>
 
+<!-- the error msg styling and deployment  -->
 <% if (error && error.length) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= error %>
-      <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"
-    ></button>
-    </div>
-    <% } %>
-    
+<div
+  class="alert alert-danger alert-dismissible fade show col-6 offset-3"
+  role="alert"
+>
+  <%= error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>

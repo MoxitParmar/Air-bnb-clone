@@ -1,7 +1,10 @@
 <%- layout("/layouts/boilerplate") %>
+<!-- by this we provide this variables to all the scrips -->
+<!-- now we can use maptoken in map.js file  -->
 <script>
   const mapToken = "<%= process.env.MAP_TOKEN %>"
-  const listing = <%- JSON.stringify(listing); %>
+  const listing = JSON.parse('<%- JSON.stringify(listing) %>');
+  
 
 </script>
 
@@ -63,7 +66,7 @@
   >
 
 
-    <!-- here it is the rating bootstrap styling code -->
+    <!-- here it is the rating.css styling access code -->
     <div class="mb-3 mt-3">
       <label for="rating" class="form-label"> Rating </label>
       <fieldset class="starability-slot">
@@ -115,6 +118,8 @@
     <div class="card col-5 ms-3 mb-3">
       <div class="card-body">
         <h5 class="card-title">@<%= review.author.username %></h5>
+        <!-- it show the rating that we given above to the review card
+        this code is also from the git page of starability  -->
         <p
           class="starability-result card-text"
           data-rating="<%= review.rating %>"
@@ -137,9 +142,11 @@
  <% } %>
 </div>
 
-
+<!-- it is where the map displays 
+and it is how you have to code for displaying it -->
 <div class="col-6 offset-3 mb-3">
   <h3>Where You'll be</h3>
+  <!-- required line  -->
   <div id="map"></div>
 </div>
 

@@ -16,7 +16,9 @@ router
   .route("/login")
   .get(userController.renderLoginForm)
   .post(
+    //here we save the redirect url
     saveRedirectUrl,
+    //this is the authanticate maethod provided by passport-local-mongoose
     passport.authenticate("local", {
       failureRedirect: "/login",
       failureFlash: true,

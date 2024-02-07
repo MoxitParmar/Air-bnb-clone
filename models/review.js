@@ -1,4 +1,4 @@
-//here we define the our review schema 
+//here we define the our review schema
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
@@ -14,10 +14,10 @@ const reviewSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  author: { 
+  author: {
     type: Schema.Types.ObjectId,
-    ref: "User"
-  }
+    ref: "User",
+  },
 });
 
 module.exports = mongoose.model("Review", reviewSchema);
