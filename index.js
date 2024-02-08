@@ -112,13 +112,19 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { err });
 });
 
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
-});
+// app.listen(8080, () => {
+//   console.log("server is listening to port 8080");
+// });
 
 // "warnings": {
 //   "builds": false
 // },
+// "builds": [
+//   {
+//     "src":"./index.js",
+//     "use":"@vercel/node"
+//   }
+// ],
 // "builds": [
 //   {
 //     "src":"./index.js",
