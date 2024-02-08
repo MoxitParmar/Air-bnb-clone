@@ -2,5 +2,5 @@
   
   
   
-  "rewrites": [{ "source": "/index.js(.*)", "destination": "/index.js" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/listings" }]
 }
